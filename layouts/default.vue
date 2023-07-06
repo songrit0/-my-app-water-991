@@ -63,6 +63,9 @@ export default {
 * {
   font-family: 'Chakra Petch', sans-serif;
 }
+p{
+  font-size: smaller;
+}
 .by{
   background-color: blue;
   width: 100%;
@@ -181,14 +184,16 @@ export default {
   letter-spacing: 4px;
   font-size: 20px;
   color: black;
+ /* border-bottom: 1px solid #000000;*/
 
-  border-bottom: 1px solid #000000;
 
 }
 
 .infor_main {
-  background-image: linear-gradient(135deg, rgba(155, 47, 218, 1) 18%, rgba(255, 0, 128, 1) 100%);
-  height: 1000px;
-  border-radius: 30px 30px 0px 0px;
+   background-color: white;
+ /*  background-image: linear-gradient(135deg, rgba(155, 47, 218, 1) 18%, rgba(255, 0, 128, 1) 100%);*/
+ /*  height: 1000px;*/
+  border-radius: 20px 20px 0px 0px;
+  padding: 25px 0px;
 }
 </style>

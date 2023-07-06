@@ -1,10 +1,10 @@
 <template lang="">
     <div style="">  
       <div class="Fullscreen ">
-        <button @click="closeFullscreen()"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-fullscreen-exit" viewBox="0 0 16 16">
+        <button @click="closeFullscreen()" class="on_closeFullscreen"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#DBDBDB" class="bi bi-fullscreen-exit" viewBox="0 0 16 16">
           <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10 4.5v-4a.5.5 0 0 1 .5-.5zM0 10.5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 6 11.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zm10 1a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4z"/>
         </svg> </button>
-        <button @click="openFullscreen()"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-fullscreen" viewBox="0 0 16 16">
+        <button @click="openFullscreen()" class="off_closeFullscreen" ><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"  fill="#DBDBDB" class="bi bi-fullscreen" viewBox="0 0 16 16">
           <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z"/>
         </svg> </button>
       </div>   
@@ -185,19 +185,40 @@ body {
 .Fullscreen {
   display: flex;
   justify-content: space-between;
+  
 }
 
 .Fullscreen button {
   --border-radius: 25px;
   --border-width: 7px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
   position: relative;
-
   border: 0;
-  background-color: #21212100;
+  background-color: #ffffff;
   font-size: 18px;
   font-weight: 500;
-  color: #ffff;
+  color: rgba(255,255,255,1);
+  position: fixed;
+  bottom: 85px;
+  left: 5px;
+  display: flex;
+  border-radius: 40px;
+  width: 47px;
+  height: 47px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid #999999;
+}
 
+:fullscreen .Fullscreen .on_closeFullscreen{
+  display: flex;
+  
+}
+:fullscreen .Fullscreen .off_closeFullscreen{
+  display: none;
+  
 }
 </style>
