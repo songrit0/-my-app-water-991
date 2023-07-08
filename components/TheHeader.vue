@@ -7,6 +7,7 @@
         <button @click="openFullscreen()" class="off_closeFullscreen" ><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"  fill="#DBDBDB" class="bi bi-fullscreen" viewBox="0 0 16 16">
           <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z"/>
         </svg> </button>
+        <button class="back" @click="GO0() " v-if="pages_check()">กลับ</button>
       </div>   
 <div class="header">
     <a @click="pages_les = 'Home',goto('/')" class="active text-fff header-item" ><svg xmlns="http://www.w3.org/2000/svg" :width="svg_z.width" :height="svg_z.height" fill="currentColor" class="z-index-2 bi bi-house" viewBox="0 0 16 16">
@@ -41,6 +42,13 @@ export default {
     }
   },
   methods: {
+    GO0() {
+      this.$router.go(-1)
+      setTimeout(() => {
+        this.get_router_push()
+      }, 100);
+
+    },
     goto(item) {
       this.$router.push(item)
     },
@@ -67,7 +75,7 @@ export default {
       var path = this.$route.path
       if (path == '/house_infor') {
         console.log(`mypath : house_infor`);
-        this.pages_les = 'Contact' 
+        this.pages_les = 'Contact'
       } else if (path == '/charge') {
         console.log(`mypath : charge`);
         this.pages_les = 'export'
@@ -78,13 +86,19 @@ export default {
         console.log(`mypath : null`);
         this.pages_les = 'Home'
       }
+    },
+    pages_check(){
+      var path = this.$route.path 
+      if (path == '/') {
+        return false
+      } else {
+        return true
+      }
     }
   },
   mounted() {
     this.get_router_push()
     console.log(this.$route.path);
-
-
   },
 
 }
@@ -185,7 +199,14 @@ body {
 .Fullscreen {
   display: flex;
   justify-content: space-between;
-  
+
+}
+
+.Fullscreen .back {
+  position: fixed;
+  left: 85%;
+  color: red;
+  border: 1px solid red;
 }
 
 .Fullscreen button {
@@ -199,7 +220,7 @@ body {
   background-color: #ffffff;
   font-size: 18px;
   font-weight: 500;
-  color: rgba(255,255,255,1);
+  color: rgba(255, 255, 255, 1);
   position: fixed;
   bottom: 85px;
   left: 5px;
@@ -213,12 +234,13 @@ body {
   border: 1px solid #999999;
 }
 
-:fullscreen .Fullscreen .on_closeFullscreen{
+:fullscreen .Fullscreen .on_closeFullscreen {
   display: flex;
-  
+
 }
-:fullscreen .Fullscreen .off_closeFullscreen{
+
+:fullscreen .Fullscreen .off_closeFullscreen {
   display: none;
-  
+
 }
 </style>

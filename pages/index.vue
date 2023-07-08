@@ -19,16 +19,16 @@
               <li>ID : user#1234</li>
             </div>
           </div>
-          <div class="menuitem">
+          <div class="menuitem" @click="goto('/charge')">
             <li>คิดค่าน้ำ</li>
           </div>
-          <div class="menuitem">
+          <div class="menuitem" @click="goto('/house_infor')">
             <li>ข้อมูล บ้าน</li>
           </div>
-          <div class="menuitem">
+          <div class="menuitem" @click="goto('/other')">
             <li>อื่นๆ</li>
           </div>
-          <div class="menuitem">
+          <div class="menuitem" @click="goto('/charge')">
             <li>จัดการบัญชี</li>
           </div>
          
@@ -53,7 +53,9 @@ export default {
 
   },
   methods: {
-
+    goto(item) {
+      this.$router.push(item)
+    },
   },
 }
 </script>
