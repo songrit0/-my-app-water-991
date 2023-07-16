@@ -19,24 +19,24 @@
           <div class="coolinput">
             <label for="input" class="text">ขา:</label>
             <input v-model="data.data1" type="number" placeholder="Write here..." class="input">
-            <button @click="data.data1 = data.data1++ + 1">+</button>
-            <button @click="data.data1 = data.data1-- - 1">-</button>
+            <button @click="data.data1 = data.data1 +++ 1">+</button>
+            <button @click="data.data1 = data.data1 --- 1">-</button>
             <button @click="data.data1 = 0">X</button>
           </div>
           <br>
           <div class="coolinput">
             <label for="input" class="text">ชั้น:</label>
             <input v-model="data.data2" type="number" placeholder="Write here..." class="input">
-            <button @click="data.data2 = data.data2++ + 1">+</button>
-            <button @click="data.data2 = data.data2-- - 1">-</button>
+            <button @click="data.data2 = data.data2 +++ 1">+</button>
+            <button @click="data.data2 = data.data2 --- 1">-</button>
             <button @click="data.data2 = 0">X</button>
           </div>
           <br>
           <div class="coolinput">
             <label for="input" class="text">เศษ:</label>
             <input v-model="data.data3" type="number" placeholder="Write here..." class="input">
-            <button @click="data.data3 = data.data3++ + 1">+</button>
-            <button @click="data.data3 = data.data3-- - 1">-</button>
+            <button @click="data.data3 = data.data3 +++ 1">+</button>
+            <button @click="data.data3 = data.data3 --- 1">-</button>
             <button @click="data.data3 = 0">X</button>
           </div>
           <br>
@@ -46,8 +46,8 @@
             <div class="coolinput">
               <label for="input" class="text">จํานวนชิ้น ในล่อง:</label>
               <input v-model="data.data4" type="number" placeholder="Write here..." class="input">
-              <button @click="data.data4 = data.data4++ + 1">+</button>
-              <button @click="data.data4 = data.data4-- - 1">-</button>
+              <button @click="data.data4 = data.data4 +++ 1">+</button>
+              <button @click="data.data4 = data.data4 --- 1">-</button>
               <button @click="data.data4 = 0">X</button>
             </div>
             ในเลท มี : {{ sum33 }} ชิ้น
