@@ -19,43 +19,61 @@
           <div class="coolinput">
             <label for="input" class="text">ขา:</label>
             <input v-model="data.data1" type="number" placeholder="Write here..." class="input">
-            <button @click="data.data1 = data.data1 +++ 1">+</button>
-            <button @click="data.data1 = data.data1 --- 1">-</button>
+            <button @click="data.data1 = data.data1++ + 1">+</button>
+            <button @click="data.data1 = data.data1-- - 1">-</button>
             <button @click="data.data1 = 0">X</button>
           </div>
           <br>
           <div class="coolinput">
             <label for="input" class="text">ชั้น:</label>
             <input v-model="data.data2" type="number" placeholder="Write here..." class="input">
-            <button @click="data.data2 = data.data2 +++ 1">+</button>
-            <button @click="data.data2 = data.data2 --- 1">-</button>
+            <button @click="data.data2 = data.data2++ + 1">+</button>
+            <button @click="data.data2 = data.data2-- - 1">-</button>
             <button @click="data.data2 = 0">X</button>
           </div>
           <br>
           <div class="coolinput">
             <label for="input" class="text">เศษ:</label>
             <input v-model="data.data3" type="number" placeholder="Write here..." class="input">
-            <button @click="data.data3 = data.data3 +++ 1">+</button>
-            <button @click="data.data3 = data.data3 --- 1">-</button>
+            <button @click="data.data3 = data.data3++ + 1">+</button>
+            <button @click="data.data3 = data.data3-- - 1">-</button>
             <button @click="data.data3 = 0">X</button>
           </div>
           <br>
           <div class="import">
-            ในเลท มี : {{ sum44 }} ล่อง 
+            ในเลท มี : {{ sum44 }} กล่อง
             <br>
             <div class="coolinput">
-              <label for="input" class="text">จํานวนชิ้น ในล่อง:</label>
+              <label for="input" class="text">จํานวนชิ้น ในกล่อง:</label>
               <input v-model="data.data4" type="number" placeholder="Write here..." class="input">
-              <button @click="data.data4 = data.data4 +++ 1">+</button>
-              <button @click="data.data4 = data.data4 --- 1">-</button>
+              <button @click="data.data4 = data.data4++ + 1">+</button>
+              <button @click="data.data4 = data.data4-- - 1">-</button>
               <button @click="data.data4 = 0">X</button>
             </div>
             ในเลท มี : {{ sum33 }} ชิ้น
             <button @click="scum_T()">X</button>
+            รวมเลท มี : {{ sum55 }} กล่อง
+            รวมเลทในกล่อง มี : {{ sum55 * data.data4 }} ชิ้น
+            <div class="A1tex">
+            รวมเลทบวก : <div v-for="(item,index) in sum66 " :key="index">{{ item }}+</div></div>
+            <button @click="add_number()">รวม</button>
+            <br>
+            <div class="coolinput" v-for="(item, index) in mylogdata" :key="index">
+              <br>
+              เลทที่ {{ index + 1 }}
+              ขา:{{ item.data.A1 }}
+              ชั้น:{{ item.data.A2 }}
+              เศษ:{{ item.data.A3 }}
+              ในเลท มี : {{ item.box }} กล่อง
+              ในเลท มี : {{ item.item }} ชิ้น
+              <button @click="number_sum(item.box)">รวมเลท{{item.box}}</button>
+              
+              <!-- <button @click="del(index)">-{{item.box}}</button> -->
+            </div>
           </div>
 
 
-
+          <br><br><br><br>
 
         </div>
 
@@ -78,27 +96,41 @@ export default {
         data4: ''
       },
       sum33: '',
-      sum44: ''
+      sum44: '',
+      mylogdata: [],
+      sum55: '',
+      sum66: [],
+
 
     }
   },
   methods: {
+    del(item){
+      console.log(item);
+      this.mylogdata.splice(item)
+    },
+    number_sum(item){
+   
+      this.sum55 = this.sum55 +++ item
+      this.sum66.push(item)
+    },
     add_number() {
-      this.number = 1 + 1
+      this.mylogdata.push({ data: { A1:this.data.data1 , A2:this.data.data2,A3 : this.data.data3,A4:this.data.data4}, box: this.sum44, item: this.sum33 })
+      console.log(this.mylogdata);
     },
     scum_T() {
-    var A1 = this.data.data1
-    var A2 = this.data.data2
-    var A3 = this.data.data3
-    var A4 = this.data.data4
+      var A1 = this.data.data1
+      var A2 = this.data.data2
+      var A3 = this.data.data3
+      var A4 = this.data.data4
 
-      
+
       var A = A1 * A2
-      var B = A3 +++ A
+      var B = A3++ + A
       var C = B * A4
       this.sum44 = B
       this.sum33 = C
-      
+
     },
     light002() {
       setTimeout(() => {
@@ -206,5 +238,10 @@ export default {
   width: 20%;
   border: 2px #818CF8 solid;
   border-radius: 5px;
+}
+.A1tex{
+  display: flex;
+    flex-direction: row;
+    width: 50%;
 }
 </style>
