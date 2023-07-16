@@ -70,15 +70,15 @@ export default {
   data() {
     return {
       light00: true,
-      number: 0,
+      number: '',
       data: {
-        data1: 0,
-        data2: 0,
-        data3: 0,
-        data4: 0
+        data1: '',
+        data2: '',
+        data3: '',
+        data4: ''
       },
-      sum33: 0,
-      sum44: 0
+      sum33: '',
+      sum44: ''
 
     }
   },
@@ -94,7 +94,7 @@ export default {
 
       
       var A = A1 * A2
-      var B = A + A3
+      var B = A3 +++ A
       var C = B * A4
       this.sum44 = B
       this.sum33 = C
