@@ -97,6 +97,7 @@ export default {
     }
   },
   mounted() {
+    
     this.get_router_push()
     console.log(this.$route.path);
   },

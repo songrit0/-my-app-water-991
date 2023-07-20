@@ -1,5 +1,10 @@
 <template>
   <div class="layouts">
+    <div v-if="light00" class="photo-item infor_main light00">
+      <svg viewBox="25 25 50 50">
+        <circle r="20" cy="50" cx="50"></circle>
+      </svg>
+    </div>
     <TheHeader class="theheader" />
     <Nuxt style="z-index: 2;" />
     <div class="select" style="z-index: 3;">
@@ -27,7 +32,8 @@ export default {
   data() {
     return {
       background_theme: ['#4D196B', '#9B2FDA', '#ffffff'],
-      cars : '1'
+      cars : '1',
+      light00: true,
     }
   },
   methods: {
@@ -35,7 +41,16 @@ export default {
       var m = 'background-color:'
       return m + item
     },
+    light002() {
+      setTimeout(() => {
+        this.light00 = false
+      }, 1000);
+    }
 
+  },
+  mounted() {
+    this.light002();
+    
   },
   watch: {
     cars(){
@@ -198,4 +213,51 @@ p{
   border-radius: 20px 20px 0px 0px;
   padding: 25px 0px;
 }
+
+.light00 {
+  position: fixed;
+    top: 0px;
+    z-index: 20;
+    width: 100%;
+    height: 100%;
+    border-radius: 0px;
+}
+.light00 svg {
+  width: 4.25em;
+  transform-origin: center;
+  animation: rotate4 2s linear infinite;
+}
+
+.light00 circle {
+  fill: none;
+  stroke: hsl(214, 97%, 59%);
+  stroke-width: 2;
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: dash4 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate4 {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash4 {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 90, 200;
+    stroke-dashoffset: -35px;
+  }
+
+  100% {
+    stroke-dashoffset: -125px;
+  }
+}
+
 </style>

@@ -8,67 +8,116 @@
         </div>
       </div>
       <br>
-      <div v-if="light00" class="photo-item infor_main light00">
 
-        <svg viewBox="25 25 50 50">
-          <circle r="20" cy="50" cx="50"></circle>
-        </svg>
-      </div>
       <div class="photo-item infor_main ">
         <div class="import">
-          <div class="coolinput">
-            <label for="input" class="text">ขา:</label>
-            <input v-model="data.data1" type="number" placeholder="Write here..." class="input">
-            <button @click="data.data1 = data.data1++ + 1">+</button>
-            <button @click="data.data1 = data.data1-- - 1">-</button>
-            <button @click="data.data1 = 0">X</button>
+
+
+          <div class="grid">
+            <div class="item">
+              <div class="content">
+                <div class="coolinput">
+                  <label for="input" class="text">ขา:</label>
+                  <input v-model="data.data1" type="number" placeholder="Write here..." class="input">
+                  <button @click="data.data1 = data.data1++ + 1, datacheck++ + 1">+</button>
+                  <button @click="data.data1 = data.data1-- - 1, datacheck++ + 1">-</button>
+                  <button @click="data.data1 = 0, datacheck++ + 1">X</button>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="content">
+                <div class="coolinput">
+                  <label for="input" class="text">ชั้น:</label>
+                  <input v-model="data.data2" type="number" placeholder="Write here..." class="input">
+                  <button @click="data.data2 = data.data2++ + 1, datacheck++ + 1">+</button>
+                  <button @click="data.data2 = data.data2-- - 1, datacheck++ + 1">-</button>
+                  <button @click="data.data2 = 0, datacheck++ + 1">X</button>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="content">
+                <div class="coolinput">
+                  <label for="input" class="text">เศษ:</label>
+                  <input v-model="data.data3" type="number" placeholder="Write here..." class="input">
+                  <button @click="data.data3 = data.data3++ + 1, datacheck++ + 1">+</button>
+                  <button @click="data.data3 = data.data3-- - 1, datacheck++ + 1">-</button>
+                  <button @click="data.data3 = 0, datacheck++ + 1">X</button>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="content">
+                <div class="coolinput">
+                  <label for="input" class="text" style="color: #fb922c;">จํานวนชิ้น ในกล่อง:</label>
+                  <input v-model="data.data4" type="number" placeholder="Write here..." class="input" style="
+                  border: 2px #fb922c solid;
+              ">
+                  <button @click="data.data4 = data.data4++ + 1, datacheck++ + 1" style="
+                  border: 2px #fb922c solid;
+              ">+</button>
+                  <button @click="data.data4 = data.data4-- - 1, datacheck++ + 1" style="
+                  border: 2px #fb922c solid;
+              ">-</button>
+                  <button @click="data.data4 = 0, datacheck++ + 1" style="
+                  border: 2px #fb922c solid;
+              ">X</button>
+                </div>
+              </div>
+            </div>
           </div>
+
+
+
+
+
           <br>
-          <div class="coolinput">
-            <label for="input" class="text">ชั้น:</label>
-            <input v-model="data.data2" type="number" placeholder="Write here..." class="input">
-            <button @click="data.data2 = data.data2++ + 1">+</button>
-            <button @click="data.data2 = data.data2-- - 1">-</button>
-            <button @click="data.data2 = 0">X</button>
-          </div>
+
           <br>
-          <div class="coolinput">
-            <label for="input" class="text">เศษ:</label>
-            <input v-model="data.data3" type="number" placeholder="Write here..." class="input">
-            <button @click="data.data3 = data.data3++ + 1">+</button>
-            <button @click="data.data3 = data.data3-- - 1">-</button>
-            <button @click="data.data3 = 0">X</button>
-          </div>
+
           <br>
           <div class="import">
             ในเลท มี : {{ sum44 }} กล่อง
             <br>
-            <div class="coolinput">
-              <label for="input" class="text">จํานวนชิ้น ในกล่อง:</label>
-              <input v-model="data.data4" type="number" placeholder="Write here..." class="input">
-              <button @click="data.data4 = data.data4++ + 1">+</button>
-              <button @click="data.data4 = data.data4-- - 1">-</button>
-              <button @click="data.data4 = 0">X</button>
-            </div>
+
             ในเลท มี : {{ sum33 }} ชิ้น
-            <button @click="scum_T()">X</button>
+            <!-- <button @click="scum_T()">X</button> -->
             รวมเลท มี : {{ sum55 }} กล่อง
-            รวมเลทในกล่อง มี : {{ sum55 * data.data4 }} ชิ้น
-            <div class="A1tex">
-            รวมเลทบวก : <div v-for="(item,index) in sum66 " :key="index">{{ item }}+</div></div>
+           
+           
             <button @click="add_number()">รวม</button>
             <br>
-            <div class="coolinput" v-for="(item, index) in mylogdata" :key="index">
-              <br>
-              เลทที่ {{ index + 1 }}
-              ขา:{{ item.data.A1 }}
-              ชั้น:{{ item.data.A2 }}
-              เศษ:{{ item.data.A3 }}
-              ในเลท มี : {{ item.box }} กล่อง
-              ในเลท มี : {{ item.item }} ชิ้น
-              <button @click="number_sum(item.box)">รวมเลท{{item.box}}</button>
-              
-              <!-- <button @click="del(index)">-{{item.box}}</button> -->
+
+
+
+
+
+
+            <div class="grid2">
+
+              <div class="item" v-for="(item, index) in mylogdata" :key="index">
+                <div class="content">
+                  <div class="content_box">
+                    <!-- <p>index:{{ index }} item:{{ item }}</p> -->
+                    <p> เลทที่ {{ index + 1 }}</p>
+                    <p>ขา:{{ item.data.A1 }}</p>
+                    <p>ชั้น:{{ item.data.A2 }}</p>
+                    <p> เศษ:{{ item.data.A3 }}</p>
+                    <p> ในเลท มี : {{ item.box }} กล่อง</p>
+                    <p> ในเลท มี : {{ item.item }} ชิ้น</p>
+                    <div class="item">
+                      <button @click="number_sum(item.box)">รวมเลท</button>
+                      <button @click="del(index)">ลบข้อมูล</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="A1tex">
+              รวมเลทในกล่อง มี : {{ sum55 * data.data4 }} ชิ้น
+              รวมเลทบวก : <div v-for="(item, index) in sum66 " :key="index">{{ item }}+</div>
             </div>
           </div>
 
@@ -87,8 +136,9 @@
 export default {
   data() {
     return {
-      light00: true,
+
       number: '',
+      datacheck: 0,
       data: {
         data1: '',
         data2: '',
@@ -100,22 +150,22 @@ export default {
       mylogdata: [],
       sum55: '',
       sum66: [],
+      item: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 
 
     }
   },
   methods: {
-    del(item){
-      console.log(item);
-      this.mylogdata.splice(item)
+    del(item) {
+      this.mylogdata.splice(item, 1)
     },
-    number_sum(item){
-   
-      this.sum55 = this.sum55 +++ item
+
+    number_sum(item) {
+      this.sum55 = this.sum55++ + item
       this.sum66.push(item)
     },
     add_number() {
-      this.mylogdata.push({ data: { A1:this.data.data1 , A2:this.data.data2,A3 : this.data.data3,A4:this.data.data4}, box: this.sum44, item: this.sum33 })
+      this.mylogdata.push({ data: { A1: this.data.data1, A2: this.data.data2, A3: this.data.data3, A4: this.data.data4 }, box: this.sum44, item: this.sum33 })
       console.log(this.mylogdata);
     },
     scum_T() {
@@ -132,61 +182,81 @@ export default {
       this.sum33 = C
 
     },
-    light002() {
-      setTimeout(() => {
-        this.light00 = false
-      }, 1000);
-    }
+
   },
   mounted() {
-    this.light002();
+
     setInterval(() => {
       this.scum_T()
     }, 5000);
   },
   watch: {
-
+    datacheck() {
+      this.scum_T()
+    }
   }
 }
 </script>
   
 <style>
-.light00 svg {
-  width: 3.25em;
-  transform-origin: center;
-  animation: rotate4 2s linear infinite;
+.import .grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: stretch;
+  align-items: stretch;
+  grid-column-gap: 20px;
+  -moz-column-gap: 20px;
+  column-gap: 20px;
+  grid-row-gap: 20px;
+  row-gap: 20px;
+  width: 100%;
+
 }
 
-.light00 circle {
-  fill: none;
-  stroke: hsl(214, 97%, 59%);
-  stroke-width: 2;
-  stroke-dasharray: 1, 200;
-  stroke-dashoffset: 0;
-  stroke-linecap: round;
-  animation: dash4 1.5s ease-in-out infinite;
+.import .grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: stretch;
+  align-items: stretch;
+  grid-column-gap: 20px;
+  -moz-column-gap: 20px;
+  column-gap: 20px;
+  grid-row-gap: 20px;
+  row-gap: 20px;
+  width: 100%;
+
 }
 
-@keyframes rotate4 {
-  100% {
-    transform: rotate(360deg);
-  }
+.grid2 .content_box {
+  display: flex;
+  border: 2px solid rgb(251, 146, 44);
+  height: 160px;
+  border-radius: 7px;
+  flex-direction: column;
+  flex-wrap: nowrap;
 }
 
-@keyframes dash4 {
-  0% {
-    stroke-dasharray: 1, 200;
-    stroke-dashoffset: 0;
-  }
+.grid2 .content_box p {
+  display: inline-flex;
+  margin: 0px 0 0 4px;
+}
 
-  50% {
-    stroke-dasharray: 90, 200;
-    stroke-dashoffset: -35px;
-  }
+.grid2 .content_box .item button {
+  width: 40%;
+  border: 2px #ec9a00 solid;
+  margin: 7px 0 0 3px;
+  border-radius: 5px;
+  font-size: 10px;
+}
 
-  100% {
-    stroke-dashoffset: -125px;
-  }
+.import .content {
+  color: #242424;
+
+  font-weight: 600;
+  text-align: center;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 10px;
 }
 
 .import {
@@ -199,29 +269,33 @@ export default {
 
 .import .coolinput {
   display: flex;
-  flex-direction: column;
-  width: 75%;
+  width: 100%;
   position: static;
   flex-direction: row;
+  flex-wrap: wrap;
+
 
 }
 
 .import .coolinput label.text {
+  display: table;
   font-size: 0.75rem;
   color: #818df8;
   font-weight: 700;
   position: absolute;
   /* top: 30%; */
+  /* background-position-y: top; */
+  /* margin-top: 10px; */
   height: 10px;
-  left: 5px;
-  margin: 0 0 0 7px;
+  /* left: 5px; */
+  margin: -10px 3px -3px 8px;
   padding: 0 3px;
   background: #ffffff;
   width: -moz-fit-content;
   width: fit-content;
 }
 
-.import .coolinput input[type=number].input {
+.import .coolinput .input {
   padding: 11px 10px;
   font-size: 0.75rem;
   border: 2px #818CF8 solid;
@@ -230,18 +304,20 @@ export default {
   background: #e8e8e854;
 }
 
-.import .coolinput input[type=number].input:focus {
+.import .coolinput .input:focus {
   outline: none;
 }
 
 .import button {
   width: 20%;
   border: 2px #818CF8 solid;
+  margin: 7px 0 0 3px;
   border-radius: 5px;
 }
-.A1tex{
+
+.A1tex {
   display: flex;
-    flex-direction: row;
-    width: 50%;
+  flex-direction: row;
+  width: 50%;
 }
 </style>
