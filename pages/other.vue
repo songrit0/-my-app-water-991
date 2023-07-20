@@ -83,9 +83,9 @@
 
             ในเลท มี : {{ sum33 }} ชิ้น
             <!-- <button @click="scum_T()">X</button> -->
-            รวมเลท มี : {{ sum55 }} กล่อง
-           
-           
+      
+
+
             <button @click="add_number()">รวม</button>
             <br>
 
@@ -107,7 +107,7 @@
                     <p> ในเลท มี : {{ item.box }} กล่อง</p>
                     <p> ในเลท มี : {{ item.item }} ชิ้น</p>
                     <div class="item">
-                      <button @click="number_sum(item.box)">รวมเลท</button>
+                      <button @click="number_sum(item.box, index)" :id="`buttonbox-${index}`">รวมเลท</button>
                       <button @click="del(index)">ลบข้อมูล</button>
                     </div>
                   </div>
@@ -116,8 +116,17 @@
             </div>
             <br>
             <div class="A1tex">
-              รวมเลทในกล่อง มี : {{ sum55 * data.data4 }} ชิ้น
-              รวมเลทบวก : <div v-for="(item, index) in sum66 " :key="index">{{ item }}+</div>
+              <div class="item-row"> รวมเลทในกล่อง มี : {{ sum55 * data.data4 }} ชิ้น \  รวมเลท มี : {{ sum55 }} กล่อง</div>
+              <div class="item-row"> รวมเลทบวก : <div style="
+                display: flex;
+                margin: 0px 0px 0px 7px;
+                width: 70%;
+                flex-wrap: wrap;
+            ">
+                <div style="
+                margin: 0 0 0 1px;
+            " class="" v-for="(item,index) in sum66" :key="item">{{sum66[index]}}</div>{{ sum55 }}</div>
+              </div>
             </div>
           </div>
 
@@ -150,7 +159,7 @@ export default {
       mylogdata: [],
       sum55: '',
       sum66: [],
-      item: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+
 
 
     }
@@ -159,10 +168,25 @@ export default {
     del(item) {
       this.mylogdata.splice(item, 1)
     },
+    plus(index){
 
-    number_sum(item) {
+      if (index ==  this.sum66.length) {
+        return true
+      }
+      else {
+        return false
+      }
+    },
+    number_sum(item, index) {
       this.sum55 = this.sum55++ + item
-      this.sum66.push(item)
+      if (this.sum66.length === 0) {
+        this.sum66.splice(0,0,`${item}=`)
+      } else {
+         this.sum66.splice(0,0,`${item}+`)
+      }
+      console.log(this.sum66);
+      
+      document.getElementById(`buttonbox-${index}`).style.display = 'none'
     },
     add_number() {
       this.mylogdata.push({ data: { A1: this.data.data1, A2: this.data.data2, A3: this.data.data3, A4: this.data.data4 }, box: this.sum44, item: this.sum33 })
@@ -317,7 +341,12 @@ export default {
 
 .A1tex {
   display: flex;
-  flex-direction: row;
-  width: 50%;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 0 0 15px;
+}
+
+.A1tex .item-row {
+  display: flex;
 }
 </style>
