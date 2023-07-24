@@ -11,8 +11,6 @@
 
       <div class="photo-item infor_main ">
         <div class="import">
-
-
           <div class="grid">
             <div class="item">
               <div class="content">
@@ -67,35 +65,17 @@
               </div>
             </div>
           </div>
-
-
-
-
-
           <br>
-
           <br>
-
           <br>
           <div class="import">
             ในเลท มี : {{ sum44 }} กล่อง
             <br>
-
             ในเลท มี : {{ sum33 }} ชิ้น
             <!-- <button @click="scum_T()">X</button> -->
-      
-
-
             <button @click="add_number()">รวม</button>
             <br>
-
-
-
-
-
-
             <div class="grid2">
-
               <div class="item" v-for="(item, index) in mylogdata" :key="index">
                 <div class="content">
                   <div class="content_box">
@@ -107,7 +87,7 @@
                     <p> ในเลท มี : {{ item.box }} กล่อง</p>
                     <p> ในเลท มี : {{ item.item }} ชิ้น</p>
                     <div class="item">
-                      <button @click="number_sum(item.box, index)" :id="`buttonbox-${index}`">รวมเลท</button>
+                      <button @click="number_sum(item.box, index, sum55)" :id="`buttonbox-${index}`">รวมเลท</button>
                       <button @click="del(index)">ลบข้อมูล</button>
                     </div>
                   </div>
@@ -116,32 +96,119 @@
             </div>
             <br>
             <div class="A1tex">
-              <div class="item-row"> รวมเลทในกล่อง มี : {{ sum55 * data.data4 }} ชิ้น \  รวมเลท มี : {{ sum55 }} กล่อง</div>
+              <div class="item-row"> รวมเลทในกล่อง มี : {{ sum55 * data.data4 }} ชิ้น \ รวมเลท มี : {{ sum55 }} กล่อง
+              </div>
               <div class="item-row"> รวมเลทบวก : <div style="
                 display: flex;
                 margin: 0px 0px 0px 7px;
                 width: 70%;
                 flex-wrap: wrap;
             ">
-                <div style="
+                  <div style="
                 margin: 0 0 0 1px;
-            " class="" v-for="(item,index) in sum66" :key="item">{{sum66[index]}}</div>{{ sum55 }}</div>
+            " class="" v-for="(item, index) in sum66" :key="item">{{ sum66[index] }}</div>{{ sum55 }}
+                </div>
               </div>
             </div>
+
+
+            <div class="content_box2">
+              Stock : {{ Stock }}
+              <div class="item-row"> รวมเลทบวก : <div style="
+                display: flex;
+                margin: 0px 0px 0px 7px;
+                width: 70%;
+                flex-wrap: wrap;
+            ">
+                  <div style="
+                margin: 0 0 0 1px;
+            " class="" v-for="(item, index) in sum66" :key="item">{{ sum66[index] }}</div>{{ sum55 }} กล่อง
+                </div>
+              </div>
+              <div class="item-row">
+                <div style="
+                display: flex;
+                margin: 0px 0px 0px 7px;
+                width: 70%;
+                flex-wrap: wrap;
+            ">
+                  <div style="
+                margin: 0 0 0 1px;
+            " class="">{{ sum55 }} X {{ data.data4 }} <div v-if="addhomd == !0">+{{addhomd}}</div> = {{ sum55 * data.data4 + addhomd}} ชิ้น</div>
+
+
+                </div>
+                <div style="
+                margin: 0 0 0 1px;
+            " class="">Diff:{{ (sum55 * data.data4) - Stock }} ชิ้น</div>
+              </div>
+              --------------------------------------------------------------------------------
+              <div class="content" style="text-align: start;">
+                <div class="content_box">
+                  <p>Stock = {{ Stock }}</p>
+                  <p>นับได้ = {{ sum55 * data.data4 + addhomd }}</p>
+                  <p>Diff = {{ (sum55 * data.data4 + addhomd) - Stock }}</p>
+                  <div class="item"><button id="buttonbox-0">รวมเลท</button> <button>ลบข้อมูล</button></div>
+                </div>
+              </div>
+
+
+
+
+
+
+
+            </div>
+ <div class="item">
+              <div class="content">
+                <div class="coolinput">
+                  <label for="input" class="text" style="color: #fb922c;">หน้าบ้าน :</label>
+                  <input v-model="addhomd" type="number" placeholder="Write here..." class="input" style="
+                  border: 2px #fb922c solid;
+              ">
+                  <button @click="addhomd = addhomd++ + 1, datacheck++ + 1" style="
+                  border: 2px #fb922c solid;
+              ">+</button>
+                  <button @click="addhomd = addhomd-- - 1, datacheck++ + 1" style="
+                  border: 2px #fb922c solid;
+              ">-</button>
+                  <button @click="addhomd = 0, datacheck++ + 1" style="
+                  border: 2px #fb922c solid;
+              ">X</button>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="content">
+                <div class="coolinput">
+                  <label for="input" class="text" style="color: #fb922c;">Stock:</label>
+                  <input v-model="Stock" type="number" placeholder="Write here..." class="input" style="
+                  border: 2px #fb922c solid;
+              ">
+                  <button @click="Stock = Stock++ + 1, datacheck++ + 1" style="
+                  border: 2px #fb922c solid;
+              ">+</button>
+                  <button @click="Stock = Stock-- - 1, datacheck++ + 1" style="
+                  border: 2px #fb922c solid;
+              ">-</button>
+                  <button @click="Stock = 0, datacheck++ + 1" style="
+                  border: 2px #fb922c solid;
+              ">X</button>
+                </div>
+              </div>
+            </div>
+
           </div>
-
-
           <br><br><br><br>
-
         </div>
-
-
       </div>
     </div>
   </div>
 </template>
   
 <script>
+import Swal from 'sweetalert2'
+
 export default {
   data() {
     return {
@@ -159,6 +226,8 @@ export default {
       mylogdata: [],
       sum55: '',
       sum66: [],
+      Stock: '',
+      addhomd:0
 
 
 
@@ -168,29 +237,42 @@ export default {
     del(item) {
       this.mylogdata.splice(item, 1)
     },
-    plus(index){
+    plus(index) {
 
-      if (index ==  this.sum66.length) {
+      if (index == this.sum66.length) {
         return true
       }
       else {
         return false
       }
     },
-    number_sum(item, index) {
+    number_sum(item, index, DS) {
       this.sum55 = this.sum55++ + item
       if (this.sum66.length === 0) {
-        this.sum66.splice(0,0,`${item}=`)
+        this.sum66.splice(0, 0, `${item}=`)
       } else {
-         this.sum66.splice(0,0,`${item}+`)
+        this.sum66.splice(0, 0, `${item}+`)
       }
       console.log(this.sum66);
-      
+
       document.getElementById(`buttonbox-${index}`).style.display = 'none'
+
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: `รวมแล้ว! = ${DS}+${item}=${this.sum55} `,
+        showConfirmButton: false,
+        timer: 1500
+      })
     },
     add_number() {
       this.mylogdata.push({ data: { A1: this.data.data1, A2: this.data.data2, A3: this.data.data3, A4: this.data.data4 }, box: this.sum44, item: this.sum33 })
       console.log(this.mylogdata);
+      Swal.fire(
+        'Good job!',
+        'รวมแล้ว!',
+        'success'
+      )
     },
     scum_T() {
       var A1 = this.data.data1
@@ -258,6 +340,16 @@ export default {
   border-radius: 7px;
   flex-direction: column;
   flex-wrap: nowrap;
+}
+
+.content_box2 {
+  display: flex;
+    border: 2px solid rgb(251, 146, 44);
+    /* height: 160px; */
+    border-radius: 7px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
 }
 
 .grid2 .content_box p {
@@ -333,7 +425,7 @@ export default {
 }
 
 .import button {
-  width: 20%;
+  width: 30%;
   border: 2px #818CF8 solid;
   margin: 7px 0 0 3px;
   border-radius: 5px;
@@ -348,5 +440,4 @@ export default {
 
 .A1tex .item-row {
   display: flex;
-}
-</style>
+}</style>
